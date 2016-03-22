@@ -11,6 +11,10 @@ $(document).on('click', '#creat', function(){
     var name =  $("#name").val();
     var email =  $("#email").val();
     var eventa =  $("#eventa").val();
+    var fName = document.getElementById('pgAddBookBookImage').files[0];
+    if (typeof (fName) === 'undefined') fName = '';
+    var ofName = fName.name;
+    var reader = new FileReader();
     db.transaction(function(transaction) {
     var executeQuery = "INSERT INTO mydata (name, email, eventa) VALUES (?,?,?)";
     transaction.executeSql(executeQuery, [name,email,eventa]
@@ -36,9 +40,9 @@ var key = "";
          eventa = results.rows.item(i).eventa;
          id = results.rows.item(i).id;
          pair += "<tr><td><center>"+id+"</center></td><td><center>"+key+"</center></td><td><center>"+results.rows.item(i).email+"</center></td><td><center>"+eventa+"</center></td><td><a class=\"update\" href=\"#myPopupDialog\"  data-custom="+"'"+ id+ "'" +"data-rel=\"popup\" data-position-to=\"window\" data-transition=\"pop\"><center><i class='fa fa-pencil-square-o'></i></center></a></td><td><a  id=\"delete\" data=\""+id+"\"><center><i class='fa fa-trash'></i></center></a></td></tr>";
-       alert(key+'keey for');
-           alert(eventa+'eventa for');
-               alert(id+'id for');
+       //alert(key+'keey for');
+          // alert(eventa+'eventa for');
+            //   alert(id+'id for');
        }
        if (pair == "<tr><th>Name</th><th>Day</th><th>Event</th></tr>") {
          pair += "<tr><td><i>empty</i></td><td><i>empty</i></td><td><i>empty</i></td></tr>";
@@ -83,9 +87,9 @@ var key = "";
          eventa = results.rows.item(i).eventa;
          id = results.rows.item(i).id;
          pair += "<tr><td><center>"+id+"</center></td><td><center>"+key+"</center></td><td><center>"+results.rows.item(i).email+"</center></td><td><center>"+eventa+"</center></td><td><a class=\"update\" href=\"#myPopupDialog\"  data-custom="+"'"+ id+ "'" +"data-rel=\"popup\" data-position-to=\"window\" data-transition=\"pop\"><center><i class='fa fa-pencil-square-o'></i></center></a></td><td><a  id=\"delete\" data=\""+id+"\"><center><i class='fa fa-trash'></i></center></a></td></tr>";
-       alert(key+'keey for');
-           alert(eventa+'eventa for');
-               alert(id+'id for');
+       alert(key+'keey for ssy');
+           alert(eventa+'eventa for ssy');
+               alert(id+'id for ssy');
 emaill='asd';
 $.ajax({url: 'http://staging.eimpressive.com/slim-four/offline.php?id='+id+'&key='+key+'&emaill='+emaill+'&eventa='+eventa,
   data:$('#new').serialize(),
@@ -119,6 +123,7 @@ console.log(error);
 alert('Network error has occurred please try again!');
 }
 });
+
 
        }
       
